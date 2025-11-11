@@ -30,16 +30,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:backgroundTint="@color/gold"
         android:isIndicator="false"
         android:numStars="5"
-        android:rating="0"
-        android:stepSize="1"
         android:progressTint="@color/gold"
+        android:rating="0"
         android:secondaryProgressTint="@color/gold"
-        android:backgroundTint="@color/gold"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="508dp"
-        />
+        android:stepSize="1"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="508dp" />
 
     <TextView
         android:id="@+id/textViewCalificacion"
@@ -47,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Calificación: 0 estrellas"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteX="123dp"
         tools:layout_editor_absoluteY="565dp" />
 
     <Button

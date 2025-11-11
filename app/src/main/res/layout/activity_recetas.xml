@@ -12,6 +12,30 @@
         android:layout_width="134dp"
         android:layout_height="132dp"
         tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="32dp"
+        tools:layout_editor_absoluteY="31dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txt_ingredientes"
+        android:layout_width="262dp"
+        android:layout_height="99dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <TextView
+        android:id="@+id/txt_preparacion"
+        android:layout_width="261dp"
+        android:layout_height="119dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <Button
+        android:id="@+id/bt_reseniar"
+        android:layout_width="138dp"
+        android:layout_height="67dp"
+        android:text="SUBIR RESEÑA"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="500dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
