@@ -16,13 +16,13 @@
         tools:layout_editor_absoluteY="40dp" />
 
     <LinearLayout
-        android:layout_width="244dp"
-        android:layout_height="510dp"
+        android:layout_width="246dp"
+        android:layout_height="401dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="100dp">
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="159dp">
 
         <ImageView
             android:id="@+id/imageView5"
@@ -125,6 +125,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="VOLVER"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="641dp" />
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="614dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
