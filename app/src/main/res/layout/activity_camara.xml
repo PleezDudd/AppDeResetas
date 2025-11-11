@@ -16,7 +16,7 @@
 
     <Button
         android:id="@+id/btnTomarFoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="148dp"
+        android:layout_height="59dp"
         android:text="Tomar Foto" />
 </LinearLayout>

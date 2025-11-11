@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".subir_resenia">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="68dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/txt_contrasenia"
+        android:layout_width="309dp"
+        android:layout_height="195dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Escribe tu reseña"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="218dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarPlato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="1"
+        android:progressTint="@color/gold"
+        android:secondaryProgressTint="@color/gold"
+        android:backgroundTint="@color/gold"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="508dp"
+        />
+
+    <TextView
+        android:id="@+id/textViewCalificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calificación: 0 estrellas"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="565dp" />
+
+    <Button
+        android:id="@+id/bt_subirResenia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBIR"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="607dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

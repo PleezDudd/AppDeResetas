@@ -2,17 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appresenias">
-
     <!-- ✅ Detecta cámara, pero no la requiere obligatoriamente -->
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false" />
-
-    <!-- ✅ Permisos modernos -->
+        android:required="false" /> <!-- ✅ Permisos modernos -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-
-    <!-- Compatibilidad con versiones antiguas (solo se aplican hasta el SDK indicado) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- Compatibilidad con versiones antiguas (solo se aplican hasta el SDK indicado) -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -30,7 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppResenias"
         tools:targetApi="34">
-
+        <activity
+            android:name=".subir_resenia"
+            android:exported="false" />
         <!-- Si usas FileProvider para guardar fotos -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -59,8 +56,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
