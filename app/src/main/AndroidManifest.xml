@@ -26,9 +26,14 @@
         android:theme="@style/Theme.AppResenias"
         tools:targetApi="34">
         <activity
-            android:name=".subir_resenia"
+            android:name=".resenia"
             android:exported="false" />
-        <!-- Si usas FileProvider para guardar fotos -->
+        <activity
+            android:name=".resenias"
+            android:exported="false" />
+        <activity
+            android:name=".subir_resenia"
+            android:exported="false" /> <!-- Si usas FileProvider para guardar fotos -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
