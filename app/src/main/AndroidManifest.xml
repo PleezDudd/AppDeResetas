@@ -5,9 +5,13 @@
     <!-- ✅ Detecta cámara, pero no la requiere obligatoriamente -->
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false" /> <!-- ✅ Permisos modernos -->
+        android:required="false" />     <!-- ✅ Permisos modernos -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- Compatibilidad con versiones antiguas (solo se aplican hasta el SDK indicado) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    
+    <!-- Permisos de red para llamadas a la API -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Compatibilidad con versiones antiguas (solo se aplican hasta el SDK indicado) -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />

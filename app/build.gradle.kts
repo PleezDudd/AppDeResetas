@@ -64,4 +64,26 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-ktx:1.9.0")
+
+    // Retrofit para llamadas a la API
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
+    
+    // Moshi para convertir JSON a objetos Kotlin
+    implementation("com.squareup.moshi:moshi:1.15.1")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
+    
+    // OkHttp para logging y configuración de red
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    
+    // RecyclerView (necesario para mostrar la lista de recetas)
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    
+    // Glide para cargar imágenes desde URLs
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    
+    // CardView para los items de recetas
+    implementation("androidx.cardview:cardview:1.0.0")
 }
