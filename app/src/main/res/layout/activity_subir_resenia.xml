@@ -5,56 +5,53 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".subir_resenia">
+    android:padding="16dp"
+    tools:context=".SubirReseniaActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="68dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:id="@+id/iv_plato_photo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="Foto del plato" />
 
     <EditText
-        android:id="@+id/txt_contrasenia"
-        android:layout_width="309dp"
-        android:layout_height="195dp"
+        android:id="@+id/et_comment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Escribe tu reseña"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="218dp" />
+        android:gravity="top"
+        android:hint="Escribe tu reseña..."
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarPlato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_plato_photo" />
 
     <RatingBar
         android:id="@+id/ratingBarPlato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/gold"
-        android:isIndicator="false"
+        android:layout_marginBottom="8dp"
         android:numStars="5"
-        android:progressTint="@color/gold"
-        android:rating="0"
-        android:secondaryProgressTint="@color/gold"
         android:stepSize="1"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="508dp" />
-
-    <TextView
-        android:id="@+id/textViewCalificacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calificación: 0 estrellas"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="565dp" />
+        app:layout_constraintBottom_toTopOf="@+id/bt_subirResenia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_subirResenia"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="SUBIR"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="607dp" />
+        android:text="SUBIR RESEÑA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
