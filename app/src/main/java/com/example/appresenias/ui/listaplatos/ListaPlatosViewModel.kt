@@ -1,3 +1,6 @@
+/*
+ * Integrantes: Mirko Pino, Gabriel Nercelles, Cristobal Paredes
+ */
 package com.example.appresenias.ui.listaplatos
 
 import androidx.lifecycle.ViewModel
@@ -27,8 +30,7 @@ class ListaPlatosViewModel @Inject constructor(
     val uiState: StateFlow<ListaPlatosUiState> = _uiState.asStateFlow()
 
     init {
-        // Carga inicial de recetas al crear el ViewModel
-        buscarRecetas("Arrabiata") // Término de búsqueda por defecto
+        buscarRecetas("Soup")
     }
 
     fun buscarRecetas(query: String) {

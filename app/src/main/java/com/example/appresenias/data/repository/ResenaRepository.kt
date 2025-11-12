@@ -1,3 +1,6 @@
+/*
+ * Integrantes: Mirko Pino, Gabriel Nercelles, Cristobal Paredes
+ */
 package com.example.appresenias.data.repository
 
 import com.example.appresenias.data.local.Resena

@@ -1,3 +1,6 @@
+/*
+ * Integrantes: Mirko Pino, Gabriel Nercelles, Cristobal Paredes
+ */
 package com.example.appresenias.ui.resena
 
 import androidx.lifecycle.ViewModel
