@@ -31,34 +31,28 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppResenias.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ListaPlatosActivity"
-            android:exported="false" />
-            
-        <activity
-            android:name=".RecetaDetalleActivity"
+        <activity android:name=".RecetaDetalleActivity" android:exported="false" android:theme="@style/Theme.AppResenias.NoActionBar" />
+        <activity android:name=".SubirReseniaActivity" android:exported="false" />
+        <activity android:name=".ReseniaDetalleActivity" 
             android:exported="false"
             android:theme="@style/Theme.AppResenias.NoActionBar" />
-            
-        <activity
-            android:name=".ReseniasActivity"
-            android:exported="false" />
-            
-        <activity
-            android:name=".SubirReseniaActivity"
-            android:exported="false" />
 
-        <activity
-            android:name=".camara"
-            android:exported="false" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
             
     </application>
 

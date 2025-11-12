@@ -12,6 +12,10 @@ class ResenaRepository @Inject constructor(private val resenaDao: ResenaDao) {
     fun obtenerTodas(): Flow<List<Resena>> {
         return resenaDao.obtenerTodas()
     }
+    
+    fun obtenerResenaPorId(id: Int): Flow<Resena?> {
+        return resenaDao.obtenerPorId(id)
+    }
 
     suspend fun insertar(resena: Resena) {
         resenaDao.insertar(resena)

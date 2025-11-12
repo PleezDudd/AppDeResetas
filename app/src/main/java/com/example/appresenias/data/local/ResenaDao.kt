@@ -16,4 +16,7 @@ interface ResenaDao {
 
     @Query("SELECT * FROM reseñas_tabla WHERE recipe_id = :recipeId")
     fun obtenerPorReceta(recipeId: String): Flow<List<Resena>>
+
+    @Query("SELECT * FROM reseñas_tabla WHERE id = :id")
+    fun obtenerPorId(id: Int): Flow<Resena?>
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Permite guardar imágenes tomadas por la cámara en Pictures -->
-    <external-path name="images" path="Pictures/" />
+    <!--
+      Esta etiqueta corresponde al directorio devuelto por getExternalFilesDir(null).
+      El atributo `path="."` significa que damos acceso a la raíz de ese directorio.
+      Esto permite que el FileProvider genere URIs para los archivos de imagen temporales
+      que creamos en SubirReseniaActivity.
+    -->
+    <external-files-path name="my_images" path="." />
 </paths>

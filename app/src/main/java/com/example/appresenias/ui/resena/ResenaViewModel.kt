@@ -23,10 +23,8 @@ class ResenaViewModel @Inject constructor(
             initialValue = emptyList()
         )
 
-    fun insertarNuevaResena(comment: String, rating: Int, recipeId: String) {
+    fun insertarNuevaResena(comment: String, rating: Int, recipeId: String, photoUri: String) {
         viewModelScope.launch {
-            val photoUri = "uri/placeholder.jpg" // Aún es un placeholder
-
             val nuevaResena = Resena(
                 recipeId = recipeId,
                 photoUri = photoUri,

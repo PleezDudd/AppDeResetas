@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.example.appresenias.R
 import com.example.appresenias.data.local.Resena
 import com.example.appresenias.databinding.ItemResenaBinding
 
@@ -29,6 +31,13 @@ class ResenaAdapter(
         fun bind(resena: Resena) {
             binding.tvItemComment.text = resena.comment
             binding.tvItemRating.text = "Calificación: ${resena.rating} estrellas"
+
+            // Cargar la imagen usando Coil
+            binding.ivItemPhoto.load(resena.photoUri) {
+                crossfade(true)
+                placeholder(R.drawable.ic_launcher_background) // Imagen de carga
+                error(R.drawable.ic_launcher_background)     // Imagen si la URI es inválida o no se puede cargar
+            }
         }
     }
 
