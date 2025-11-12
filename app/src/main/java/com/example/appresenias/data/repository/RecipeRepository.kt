@@ -1,83 +1,74 @@
 package com.example.appresenias.data.repository
 
 import com.example.appresenias.data.remote.RecipeApiService
-import com.example.appresenias.data.remote.dto.RecipeDto
-import com.example.appresenias.domain.model.Ingredient
-import com.example.appresenias.domain.model.Recipe
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.squareup.moshi.JsonClass
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@JsonClass(generateAdapter = true)
+data class RecipeSearchResult(val meals: List<RecipeSummary>?)
+
+@JsonClass(generateAdapter = true)
+data class RecipeSummary(val idMeal: String, val strMeal: String, val strMealThumb: String)
+
+@JsonClass(generateAdapter = true)
+data class RecipeDetailResult(val meals: List<RecipeDetail>?)
+
+@JsonClass(generateAdapter = true)
+data class RecipeDetail(
+    val idMeal: String,
+    val strMeal: String,
+    val strCategory: String?,
+    val strArea: String?,
+    val strInstructions: String?,
+    val strMealThumb: String?,
+    val strIngredient1: String?, val strMeasure1: String?,
+    val strIngredient2: String?, val strMeasure2: String?,
+    val strIngredient3: String?, val strMeasure3: String?,
+    val strIngredient4: String?, val strMeasure4: String?,
+    val strIngredient5: String?, val strMeasure5: String?,
+    val strIngredient6: String?, val strMeasure6: String?,
+    val strIngredient7: String?, val strMeasure7: String?,
+    val strIngredient8: String?, val strMeasure8: String?,
+    val strIngredient9: String?, val strMeasure9: String?,
+    val strIngredient10: String?, val strMeasure10: String?,
+    val strIngredient11: String?, val strMeasure11: String?,
+    val strIngredient12: String?, val strMeasure12: String?,
+    val strIngredient13: String?, val strMeasure13: String?,
+    val strIngredient14: String?, val strMeasure14: String?,
+    val strIngredient15: String?, val strMeasure15: String?,
+    val strIngredient16: String?, val strMeasure16: String?,
+    val strIngredient17: String?, val strMeasure17: String?,
+    val strIngredient18: String?, val strMeasure18: String?,
+    val strIngredient19: String?, val strMeasure19: String?,
+    val strIngredient20: String?, val strMeasure20: String?
+) {
+    fun getIngredientsWithMeasures(): List<Pair<String, String>> {
+        val ingredients = mutableListOf<Pair<String, String>>()
+        val properties = this::class.java.declaredFields
+
+        for (i in 1..20) {
+            val ingredientName = properties.find { it.name == "strIngredient$i" }?.get(this) as? String
+            val measure = properties.find { it.name == "strMeasure$i" }?.get(this) as? String
+
+            if (!ingredientName.isNullOrBlank()) {
+                ingredients.add(Pair(ingredientName, measure.orEmpty()))
+            }
+        }
+        return ingredients
+    }
+}
+
 @Singleton
 class RecipeRepository @Inject constructor(
-    private val apiService: RecipeApiService
+    private val recipeApiService: RecipeApiService
 ) {
 
-    suspend fun buscarRecetas(nombre: String): Result<List<Recipe>> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val response = apiService.buscarRecetasPorNombre(nombre)
-                val recipes = response.meals?.mapNotNull { dto ->
-                    dto.toDomainModel()
-                } ?: emptyList()
-                Result.success(recipes)
-            } catch (e: Exception) {
-                Result.failure(e)
-            }
-        }
+    suspend fun buscarRecetas(name: String): RecipeSearchResult {
+        return recipeApiService.searchRecipesByName(name)
     }
 
-    suspend fun obtenerRecetaPorId(id: String): Result<Recipe?> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val response = apiService.obtenerRecetaPorId(id)
-                val recipe = response.meals?.firstOrNull()?.toDomainModel()
-                Result.success(recipe)
-            } catch (e: Exception) {
-                Result.failure(e)
-            }
-        }
+    suspend fun obtenerRecetaPorId(id: String): RecipeDetailResult {
+        return recipeApiService.getRecipeById(id)
     }
 }
-
-private fun RecipeDto.toDomainModel(): Recipe? {
-    val id = idMeal ?: return null
-    val name = strMeal ?: return null
-
-    val ingredients = mutableListOf<Ingredient>()
-    val ingredientFields = listOf(
-        strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5,
-        strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10,
-        strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15,
-        strIngredient16, strIngredient17, strIngredient18, strIngredient19, strIngredient20
-    )
-    val measureFields = listOf(
-        strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5,
-        strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10,
-        strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15,
-        strMeasure16, strMeasure17, strMeasure18, strMeasure19, strMeasure20
-    )
-
-    ingredientFields.forEachIndexed { index, ingredient ->
-        if (!ingredient.isNullOrBlank()) {
-            ingredients.add(
-                Ingredient(
-                    name = ingredient.trim(),
-                    measure = measureFields[index]?.trim()
-                )
-            )
-        }
-    }
-
-    return Recipe(
-        id = id,
-        name = name,
-        imageUrl = strMealThumb,
-        category = strCategory,
-        area = strArea,
-        instructions = strInstructions,
-        ingredients = ingredients
-    )
-}
-

@@ -9,8 +9,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Redirigir directamente a lista_platos para testear la búsqueda de recetas
-        val intent = Intent(this, lista_platos::class.java)
+        // Redirigir inmediatamente a ListaPlatosActivity
+        val intent = Intent(this, ListaPlatosActivity::class.java)
         startActivity(intent)
         finish()
     }

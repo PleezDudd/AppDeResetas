@@ -12,8 +12,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SubirReseniaActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_RECIPE_ID = "extra_recipe_id"
+    }
+
     private lateinit var binding: ActivitySubirReseniaBinding
     private val viewModel: ResenaViewModel by viewModels()
+    private var currentRecipeId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +26,9 @@ class SubirReseniaActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.title = "Crear Nueva Reseña"
+        
+        currentRecipeId = intent.getStringExtra(EXTRA_RECIPE_ID)
+
         setupListeners()
     }
 
@@ -29,8 +37,8 @@ class SubirReseniaActivity : AppCompatActivity() {
             val comment = binding.etComment.text.toString().trim()
             val rating = binding.ratingBarPlato.rating.toInt()
 
-            if (comment.isNotEmpty() && rating > 0) {
-                viewModel.insertarNuevaResena(comment, rating)
+            if (comment.isNotEmpty() && rating > 0 && !currentRecipeId.isNullOrBlank()) {
+                viewModel.insertarNuevaResena(comment, rating, currentRecipeId!!)
                 Toast.makeText(this, "Reseña guardada", Toast.LENGTH_SHORT).show()
                 finish()
             } else {

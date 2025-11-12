@@ -1,41 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recetas">
+    tools:context=".RecetaDetalleActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="134dp"
-        android:layout_height="132dp"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="31dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <TextView
-        android:id="@+id/txt_ingredientes"
-        android:layout_width="262dp"
-        android:layout_height="99dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="194dp" />
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
 
-    <TextView
-        android:id="@+id/txt_preparacion"
-        android:layout_width="261dp"
-        android:layout_height="119dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="320dp" />
+            <ImageView
+                android:id="@+id/iv_recipe_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
-    <Button
-        android:id="@+id/bt_reseniar"
-        android:layout_width="138dp"
-        android:layout_height="67dp"
-        android:text="SUBIR RESEÑA"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="500dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_recipe_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                tools:text="Category" />
+
+            <TextView
+                android:id="@+id/tv_recipe_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                tools:text="Area" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ingredientes"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                tools:text=" - 1 cup Flour\n - 2 eggs\n - 1/2 cup Milk" />
+
+            <TextView
+                android:id="@+id/tv_instructions_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Instrucciones"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <TextView
+                android:id="@+id/tv_instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                tools:text="1. Mix all ingredients...\n2. Bake for 30 minutes..." />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_create_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_rate_review"
+        android:contentDescription="Crear reseña" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

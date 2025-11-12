@@ -2,22 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appresenias">
-    <!-- ✅ Detecta cámara, pero no la requiere obligatoriamente -->
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />     <!-- ✅ Permisos modernos -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    
-    <!-- Permisos de red para llamadas a la API -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Compatibilidad con versiones antiguas (solo se aplican hasta el SDK indicado) -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="29" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:name=".MyTestApplication"
@@ -30,19 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppResenias"
         tools:targetApi="34">
-        
-        <!-- Activities del flujo de Reseñas -->
-        <activity
-            android:name=".ReseniasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SubirReseniaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".resenia"
-            android:exported="false" /> <!-- Dejada para el futuro (detalle) -->
 
-        <!-- Launcher Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -53,28 +39,27 @@
             </intent-filter>
         </activity>
 
-        <!-- Otras Activities (revisar si siguen siendo necesarias) -->
+        <activity
+            android:name=".ListaPlatosActivity"
+            android:exported="false" />
+            
+        <activity
+            android:name=".RecetaDetalleActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppResenias.NoActionBar" />
+            
+        <activity
+            android:name=".ReseniasActivity"
+            android:exported="false" />
+            
+        <activity
+            android:name=".SubirReseniaActivity"
+            android:exported="false" />
+
         <activity
             android:name=".camara"
             android:exported="false" />
-        <activity
-            android:name=".recetas"
-            android:exported="false" />
-        <activity
-            android:name=".lista_platos"
-            android:exported="false" />
-
-        <!-- FileProvider para la cámara -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="androidx.core.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-
+            
     </application>
 
 </manifest>
