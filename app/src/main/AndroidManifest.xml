@@ -16,6 +16,7 @@
         android:maxSdkVersion="29" />
 
     <application
+        android:name=".MyTestApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -25,15 +26,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppResenias"
         tools:targetApi="34">
+        
+        <!-- Activities del flujo de Reseñas -->
+        <activity
+            android:name=".ReseniasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubirReseniaActivity"
+            android:exported="false" />
         <activity
             android:name=".resenia"
+            android:exported="false" /> <!-- Dejada para el futuro (detalle) -->
+
+        <!-- Launcher Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppResenias.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Otras Activities (revisar si siguen siendo necesarias) -->
+        <activity
+            android:name=".camara"
             android:exported="false" />
         <activity
-            android:name=".resenias"
+            android:name=".recetas"
             android:exported="false" />
         <activity
-            android:name=".subir_resenia"
-            android:exported="false" /> <!-- Si usas FileProvider para guardar fotos -->
+            android:name=".lista_platos"
+            android:exported="false" />
+
+        <!-- FileProvider para la cámara -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -44,27 +71,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity
-            android:name=".camara"
-            android:exported="false" />
-        <activity
-            android:name=".recetas"
-            android:exported="false" />
-        <activity
-            android:name=".lista_platos"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity3"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

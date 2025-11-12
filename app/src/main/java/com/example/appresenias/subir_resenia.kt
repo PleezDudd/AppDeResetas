@@ -1,35 +1,40 @@
 package com.example.appresenias
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import android.widget.RatingBar
-import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.example.appresenias.data.local.Resena
+import com.example.appresenias.databinding.ActivitySubirReseniaBinding
+import com.example.appresenias.ui.resena.ResenaViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class subir_resenia : AppCompatActivity() {
+@AndroidEntryPoint
+class SubirReseniaActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySubirReseniaBinding
+    private val viewModel: ResenaViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_subir_resenia)
+        binding = ActivitySubirReseniaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Ajuste visual (bordes del sistema)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        supportActionBar?.title = "Crear Nueva Reseña"
+        setupListeners()
+    }
 
-        // ✅ Este bloque debe ir FUERA del setOnApplyWindowInsetsListener
-        val ratingBar = findViewById<RatingBar>(R.id.ratingBarPlato)
-        val textViewCalificacion = findViewById<TextView>(R.id.textViewCalificacion)
+    private fun setupListeners() {
+        binding.btSubirResenia.setOnClickListener {
+            val comment = binding.etComment.text.toString().trim()
+            val rating = binding.ratingBarPlato.rating.toInt()
 
-        ratingBar.setOnRatingBarChangeListener { _, rating, fromUser ->
-            if (fromUser) {
-                textViewCalificacion.text = "Calificación: $rating estrellas"
-                Toast.makeText(this, "Le diste $rating estrellas", Toast.LENGTH_SHORT).show()
+            if (comment.isNotEmpty() && rating > 0) {
+                viewModel.insertarNuevaResena(comment, rating)
+                Toast.makeText(this, "Reseña guardada", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
